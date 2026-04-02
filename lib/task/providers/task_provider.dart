@@ -11,7 +11,7 @@ final tasksProvider = StreamNotifierProvider<TasksNotifier, List<Task>>(() {
 class TasksNotifier extends StreamNotifier<List<Task>> {
   @override
   Stream<List<Task>> build() {
-    final session = ref.watch(authProvider).unwrapPrevious().value;
+    final session = ref.watch(authProvider).value;
     if (session == null) {
       return Stream.value([]);
     }
