@@ -25,7 +25,7 @@ class _TaskViewScreenState extends ConsumerState<TaskViewScreen> {
     final taskId = ModalRoute.of(context)!.settings.arguments as int;
 
     final task = ref
-        .watch(todosProvider)
+        .watch(tasksProvider)
         .value
         ?.firstWhere((task) => task.id == taskId);
 
@@ -44,7 +44,7 @@ class _TaskViewScreenState extends ConsumerState<TaskViewScreen> {
           IconButton(
             onPressed: () {
               ref
-                  .read(todosProvider.notifier)
+                  .read(tasksProvider.notifier)
                   .setCompletedAt(
                     task.id,
                     task.completedAt != null ? null : DateTime.now(),

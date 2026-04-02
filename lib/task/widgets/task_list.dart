@@ -9,16 +9,16 @@ class TaskList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final todos = ref.watch(todosProvider);
+    final tasksAsync = ref.watch(tasksProvider);
 
-    return todos.when(
-      data: (todos) {
-        if (todos.isEmpty) {
+    return tasksAsync.when(
+      data: (tasks) {
+        if (tasks.isEmpty) {
           return const Center(child: Text('No tasks found'));
         }
 
-        final activeTasks = todos.where((t) => t.completedAt == null).toList();
-        final completedTasks = todos.where((t) => t.completedAt != null).toList();
+        final activeTasks = tasks.where((t) => t.completedAt == null).toList();
+        final completedTasks = tasks.where((t) => t.completedAt != null).toList();
 
         return ListView(
           children: [

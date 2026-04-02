@@ -26,7 +26,7 @@ class AccountPopupMenu extends ConsumerWidget {
     items.add(PopupMenuItem(
       onTap: () async {
         await ref.read(authProvider.notifier).signOut();
-        ref.invalidate(todosProvider);
+        ref.invalidate(tasksProvider);
         if (context.mounted) {
           Navigator.of(context).pushNamedAndRemoveUntil(
             LoginScreen.routeName,

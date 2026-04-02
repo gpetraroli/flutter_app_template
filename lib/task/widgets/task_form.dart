@@ -57,10 +57,10 @@ class _TaskFormState extends ConsumerState<TaskForm> {
     try {
       if (widget.task != null) {
         await ref
-            .read(todosProvider.notifier)
-            .updateTodo(widget.task!.id, title, body);
+            .read(tasksProvider.notifier)
+            .updateTask(widget.task!.id, title, body);
       } else {
-        await ref.read(todosProvider.notifier).createTodo(title, body);
+        await ref.read(tasksProvider.notifier).createTask(title, body);
       }
 
       if (!mounted) return;

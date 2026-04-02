@@ -13,7 +13,7 @@ class TaskListItem extends ConsumerWidget {
   const TaskListItem({super.key, required this.task});
 
   void _onDismissed(DismissDirection direction, ref) async {
-    await ref.read(todosProvider.notifier).deleteTodo(task.id);
+    await ref.read(tasksProvider.notifier).deleteTask(task.id);
   }
 
   Future<bool> _onConfirmDismiss(
@@ -83,7 +83,7 @@ class TaskListItem extends ConsumerWidget {
             IconButton(
               onPressed: () {
                 ref
-                    .read(todosProvider.notifier)
+                    .read(tasksProvider.notifier)
                     .setCompletedAt(
                       task.id,
                       task.completedAt != null ? null : DateTime.now(),

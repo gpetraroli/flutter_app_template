@@ -4,11 +4,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../auth/providers/auth_provider.dart';
 import '../models/task.dart';
 
-final todosProvider = StreamNotifierProvider<TodosNotifier, List<Task>>(() {
-  return TodosNotifier();
+final tasksProvider = StreamNotifierProvider<TasksNotifier, List<Task>>(() {
+  return TasksNotifier();
 });
 
-class TodosNotifier extends StreamNotifier<List<Task>> {
+class TasksNotifier extends StreamNotifier<List<Task>> {
   @override
   Stream<List<Task>> build() {
     final session = ref.watch(authProvider).unwrapPrevious().value;
@@ -25,7 +25,7 @@ class TodosNotifier extends StreamNotifier<List<Task>> {
         .map((data) => data.map((json) => Task.fromJson(json)).toList());
   }
 
-  Future<void> createTodo(String title, String body) async {
+  Future<void> createTask(String title, String body) async {
     final supabase = Supabase.instance.client;
     final user = Supabase.instance.client.auth.currentUser;
 
@@ -40,7 +40,7 @@ class TodosNotifier extends StreamNotifier<List<Task>> {
     });
   }
 
-  Future<void> updateTodo(int id, String title, String body) async {
+  Future<void> updateTask(int id, String title, String body) async {
     final supabase = Supabase.instance.client;
     await supabase
         .from('tasks')
@@ -60,7 +60,7 @@ class TodosNotifier extends StreamNotifier<List<Task>> {
         .eq('id', id);
   }
 
-  Future<void> deleteTodo(int id) async {
+  Future<void> deleteTask(int id) async {
     final supabase = Supabase.instance.client;
     await supabase.from('tasks').delete().eq('id', id);
   }
