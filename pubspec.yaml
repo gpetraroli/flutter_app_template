@@ -1,5 +1,5 @@
 name: flutter_app_template
-description: "A new Flutter project."
+description: "Flutter starter with Supabase auth, Riverpod, and a sample tasks feature."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -39,7 +39,6 @@ dependencies:
   supabase_flutter: ^2.12.0
   intl: ^0.20.2
   markdown_widget: ^2.3.2+8
-  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +52,7 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   custom_lint: ^0.8.1
   riverpod_lint: ^3.1.0
+  flutter_launcher_icons: ^0.14.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -32,7 +32,7 @@ class App extends ConsumerWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'App template',
       theme: lightTheme,
       home: authState.when(
         data: (session) {
