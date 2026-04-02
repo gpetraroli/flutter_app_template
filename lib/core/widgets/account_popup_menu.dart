@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../auth/providers/auth_provider.dart';
 import '../../auth/screens/login_screen.dart';
+import '../../task/providers/task_provider.dart';
 
 class AccountPopupMenu extends ConsumerWidget {
   const AccountPopupMenu({super.key});
@@ -25,6 +26,7 @@ class AccountPopupMenu extends ConsumerWidget {
     items.add(PopupMenuItem(
       onTap: () async {
         await ref.read(authProvider.notifier).signOut();
+        ref.invalidate(todosProvider);
         if (context.mounted) {
           Navigator.of(context).pushNamedAndRemoveUntil(
             LoginScreen.routeName,

@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../auth/providers/auth_provider.dart';
 import '../models/task.dart';
 
 final todosProvider = StreamNotifierProvider<TodosNotifier, List<Task>>(() {
@@ -10,6 +11,11 @@ final todosProvider = StreamNotifierProvider<TodosNotifier, List<Task>>(() {
 class TodosNotifier extends StreamNotifier<List<Task>> {
   @override
   Stream<List<Task>> build() {
+    final session = ref.watch(authProvider).unwrapPrevious().value;
+    if (session == null) {
+      return Stream.value([]);
+    }
+
     final supabase = Supabase.instance.client;
 
     return supabase
