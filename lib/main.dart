@@ -13,7 +13,7 @@ import './task/screens/task_new_screen.dart';
 import './task/screens/task_view_screen.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: '.env', overrideWithFiles: ['.env.override']);
+  await dotenv.load(fileName: '.env');
 
   await Supabase.initialize(
     url: dotenv.env['SUPABASE_URL']!,

@@ -10,7 +10,7 @@ Starter Flutter app with **Supabase** (email auth, per-user data, RLS) and **Riv
 ## Use this template
 
 1. Clone the repository (or use GitHub “Use this template”).
-2. Copy [`.env.example`](.env.example) to `.env.override` and set `SUPABASE_URL` and `SUPABASE_ANON_KEY` from your Supabase project (**Project Settings → API**). The committed [`.env`](.env) holds empty placeholders; `.env.override` is gitignored and overrides them at runtime.
+2. Edit [`.env`](.env) and set `SUPABASE_URL` and `SUPABASE_ANON_KEY` from your Supabase project (**Project Settings → API**). The file is committed with empty placeholders for a quick start; keep real keys out of version control if you publish the repo.
 3. In the Supabase dashboard, enable **Email** under Authentication → Providers if needed.
 4. Run the SQL in [`supabase/schema.sql`](supabase/schema.sql) in the Supabase SQL Editor to create the `tasks` table and policies.
 5. From the project root: `flutter pub get`, then `flutter run`.
